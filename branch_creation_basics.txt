@@ -1,0 +1,22 @@
+Branch:
+* git branch <new branch_name> <old branch>
+            e.g. git branch new_feature master
+* git checkout new_feature : make our new branch the current branch 
+* Alternate way of branch:
+          git checkout -b new_feature
+* See all the branches that exist:
+          git branch
+
+Here are steps of creating branch:
+* cd your_branch_directory
+* git init
+* git add .
+* git commit -m “your first branching commit”
+* git checkout -b “branch_creation_basics”
+* git branch
+After you did initial branch commit:
+When you do some changes, do following steps:
+* git add . or git add your_changed_file
+* git commit -am “added updated file”
+* 
+
