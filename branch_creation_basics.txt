@@ -21,6 +21,7 @@ When you do some changes, do following steps:
         * git checkout -b “branch_creation_basics”
 * git add . or git add your_changed_file
 * git commit -am “added updated file”
+* git push origin YOUR_BRANCH
 
 Straight merge:
 * git checkout master
