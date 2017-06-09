@@ -1,0 +1,57 @@
+Merge Conflict:
+Sometimes merges don't go as expected and we get  merge conflicts - merge conflicts happen when Git needs your help to merge files because it doesn't know which version of a particular file you want. These occur most often when you edit the same file in different ways in two different branches and then try to merge them.
+
+When a merge conflict occurs, you have 2 choices:
+
+* You can abort the merge.
+* You can fix the conflicts to complete the merge.
+Looking at Conflicts
+
+Before you make your decision, see what the conflicts are. To do this, just run the command...
+git diff
+Copy
+Which prints out the differences in the command line. If it looks gibberish, don't worry: it's actually quite easy to read.
+
+Suppose you were trying to merge a branch called bug_fix into the HEAD of your master and had a conflict in a file named index.html. Then, in the command line output, the part of the file that caused the conflict is prefixed by this:
+
+<<<<<<< HEAD:index.html
+Copy
+The code that conflicted from the other branch is displayed after the ======= separator and suffixed with the following line:
+
+>>>>>>> bug_fix:index.html
+Copy
+The prefix and suffix lines tell you two things. First, any code that is preceded by “<<<<<<<” is the code in your current branch, and any code suffixed with “>>>>>>>” is from the other branch. Second, the name of what you are trying to merge is included before the filename. In this case, it is the HEAD—. Remember, that’s the name of the most current commit in your current branch—that conflicts with the bug_fix branch.
+
+For simple merges, you can edit the file manually to resolve the conflict. Once you have saved your changes, you need to stage and commit your changes in the normal manner. For more complicated conflicts, it's easier to use a mergetool.
+
+-----------------------------------------------------------------------------------------
+Fixing Conflicts
+
+Fixing conflicts consists of looking at the conflicting changes between different branches of the same file and deciding which one of the changes to keep.
+
+We already mentioned that you can edit the file manually. You can do this by simply opening the relevant file in a Text Editor, making your changes, saving it, and then doing an add and commit as usual.
+
+Alternatively, you can use a GUI. Below we will cover one option for Windows and one for Mac, but be aware that there are many options out there (some of which are paid).
+
+* Windows - P4Merge
+Download it here.
+
+Setup instructions here.
+
+* Mac - Opendiff
+Opendiff and FileMerge are installed as part of the Mac OS X Developer Tools. This means that if you have XCode installed, you are ready to go. If not, just go to the App Store and install XCode.
+
+To set it up as your default, run the following in the command line:
+
+git config --global merge.tool opendiff
+If you get an error about XCode, run the following:
+
+xcode-select -switch /Applications/Xcode.app/Contents/Developer/
+
+-----------------------------------------------------------------------------------------
+
+Aborting a Merge
+
+Sometimes, after looking at the conflicts you decide that it's not a good idea to merge at that point. Then you can run the command git merge --abort to try to revert to the pre-merge state.
+
+However, if there are uncommitted changes when the merge started (especially if those changes were further modified after the merge was started), git merge --abort, in some cases, could reconstruct the original (pre-merge) changes. So ALWAYS COMMIT ALL CHANGES BEFORE ATTEMPTING A MERGE.
