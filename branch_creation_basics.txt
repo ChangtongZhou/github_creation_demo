@@ -1,0 +1,35 @@
+Branch:
+* git branch <new branch_name> <old branch>
+            e.g. git branch new_feature master
+* git checkout new_feature : make our new branch the current branch 
+* Alternate way of branch:
+          git checkout -b new_feature
+* See all the branches that exist:
+          git branch
+
+Here are steps of creating branch:
+* cd your_branch_directory
+* git init
+* git add .
+* git commit -m “your first branching commit”
+* git checkout -b “branch_creation_basics”
+* git branch
+After you did initial branch commit:
+When you do some changes, do following steps:
+* git branch : make sure you are in the right branch
+    * if not in the right branch:
+        * git checkout -b “branch_creation_basics”
+* git add . or git add your_changed_file
+* git commit -am “added updated file”
+* git push origin YOUR_BRANCH
+
+Straight merge:
+* git checkout master
+* git merge your_branch_name
+
+
+Squashed Merge:
+Only use it for fixing a bug or adding new features that don’t need each commit tracing your experiments, because you just need the final outcome.
+* git checkout master
+* git merge —squash master
+* git commit -am “a commit message describing the merge”
